@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Tickets de Soporte</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<base target="_blank">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-header">
+<h1><i class="fas fa-headset"></i> TicketPro</h1>
+<p>Sistema de Soporte Técnico</p>
+</div>
+<nav class="nav-menu">
+<a class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+<a class="nav-item" data-page="tickets" onclick="showPage('tickets')"><i class="fas fa-ticket-alt"></i><span>Tickets</span><span class="nav-badge">12</span></a>
+<a class="nav-item" data-page="tecnicos" onclick="showPage('tecnicos')"><i class="fas fa-users-cog"></i><span>Técnicos</span></a>
+<a class="nav-item" data-page="historial" onclick="showPage('historial')"><i class="fas fa-history"></i><span>Historial</span></a>
+<a class="nav-item" data-page="reportes" onclick="showPage('reportes')"><i class="fas fa-file-alt"></i><span>Reportes</span></a>
+</nav>
+<div class="sidebar-footer">
+<div class="user-card">
+<div class="user-avatar">AD</div>
+<div class="user-info"><div class="name">Admin Sistema</div><div class="role">Administrador</div></div>
+</div>
+</div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<header class="topbar">
+<div class="topbar-left">
+<button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+<div class="search-box">
+<i class="fas fa-search"></i>
+<input type="text" placeholder="Buscar tickets, técnicos..." id="globalSearch">
+</div>
+</div>
+<div class="topbar-right">
+<button class="btn-icon"><i class="fas fa-bell"></i><span class="dot"></span></button>
+<button class="btn-icon"><i class="fas fa-cog"></i></button>
+<button class="btn btn-primary" onclick="openModal('modalCrearTicket')"><i class="fas fa-plus"></i> Nuevo Ticket</button>
+</div>
+</header>
+
+<main class="content">
+
+<!-- DASHBOARD -->
+<section class="page-section active" id="page-dashboard">
+<div class="page-header">
+<div class="page-title"><h2>Dashboard</h2><p>Resumen general del sistema de soporte</p></div>
+</div>
+<div class="stats-grid">
+<div class="stat-card animate-in" style="animation-delay:0.05s">
+<div class="stat-header"><div class="stat-icon purple"><i class="fas fa-ticket-alt"></i></div></div>
+<div class="stat-value">128</div><div class="stat-label">Total de Tickets</div>
+<div class="stat-change up"><i class="fas fa-arrow-up"></i> 12% este mes</div>
+</div>
+<div class="stat-card animate-in" style="animation-delay:0.1s">
+<div class="stat-header"><div class="stat-icon orange"><i class="fas fa-clock"></i></div></div>
+<div class="stat-value">24</div><div class="stat-label">Tickets Pendientes</div>
+<div class="stat-change down"><i class="fas fa-arrow-down"></i> 5% este mes</div>
+</div>
+<div class="stat-card animate-in" style="animation-delay:0.15s">
+<div class="stat-header"><div class="stat-icon green"><i class="fas fa-check-circle"></i></div></div>
+<div class="stat-value">89</div><div class="stat-label">Tickets Resueltos</div>
+<div class="stat-change up"><i class="fas fa-arrow-up"></i> 18% este mes</div>
+</div>
+<div class="stat-card animate-in" style="animation-delay:0.2s">
+<div class="stat-header"><div class="stat-icon red"><i class="fas fa-exclamation-triangle"></i></div></div>
+<div class="stat-value">7</div><div class="stat-label">Urgentes</div>
+<div class="stat-change up"><i class="fas fa-arrow-up"></i> 2 nuevos hoy</div>
+</div>
+</div>
+<div class="card animate-in" style="animation-delay:0.25s">
+<div class="card-header">
+<h3><i class="fas fa-fire"></i> Tickets con Mayor Prioridad</h3>
+<button class="btn btn-secondary btn-sm" onclick="showPage('tickets')">Ver todos</button>
+</div>
+<div class="card-body" style="padding:0">
+<table class="data-table">
+<thead><tr><th>ID</th><th>Título</th><th>Solicitante</th><th>Prioridad</th><th>Estado</th><th>Técnico</th><th>Acciones</th></tr></thead>
+<tbody>
+<tr>
+<td><span class="ticket-id">#TK-2024-089</span></td>
+<td><div class="ticket-title">Servidor de correo caído</div><div class="ticket-desc">No se pueden enviar ni recibir correos desde las 9:00 AM</div></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c6)">MR</div><div><div class="name">María Rodríguez</div><div class="email">mrodriguez@empresa.com</div></div></div></td>
+<td><span class="badge badge-priority-urgente"><i class="fas fa-bolt"></i> Urgente</span></td>
+<td><span class="badge badge-status en-progreso"><i class="fas fa-spinner fa-spin"></i> En progreso</span></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c7)">JL</div><div class="name">Juan López</div></div></td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-089')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+<tr>
+<td><span class="ticket-id">#TK-2024-088</span></td>
+<td><div class="ticket-title">Error en módulo de facturación</div><div class="ticket-desc">Los montos no se calculan correctamente en el reporte mensual</div></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:#e74c3c">CP</div><div><div class="name">Carlos Pérez</div><div class="email">cperez@empresa.com</div></div></div></td>
+<td><span class="badge badge-priority-alta"><i class="fas fa-arrow-up"></i> Alta</span></td>
+<td><span class="badge badge-status pendiente"><i class="fas fa-circle"></i> Pendiente</span></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c5)">AS</div><div class="name">Ana Sánchez</div></div></td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-088')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+<tr>
+<td><span class="ticket-id">#TK-2024-087</span></td>
+<td><div class="ticket-title">Actualización de antivirus requerida</div><div class="ticket-desc">La licencia expira en 3 días, necesitamos renovar</div></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:#f39c12">LG</div><div><div class="name">Laura Gómez</div><div class="email">lgomez@empresa.com</div></div></div></td>
+<td><span class="badge badge-priority-media"><i class="fas fa-minus"></i> Media</span></td>
+<td><span class="badge badge-status en-progreso"><i class="fas fa-spinner fa-spin"></i> En progreso</span></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c8)">DM</div><div class="name">Diego Martínez</div></div></td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-087')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- TICKETS -->
+<section class="page-section" id="page-tickets">
+<div class="page-header">
+<div class="page-title"><h2>Gestión de Tickets</h2><p>Administra y da seguimiento a todos los tickets</p></div>
+<button class="btn btn-primary" onclick="openModal('modalCrearTicket')"><i class="fas fa-plus"></i> Crear Ticket</button>
+</div>
+<div class="filters-bar">
+<span class="filter-chip active">Todos</span>
+<span class="filter-chip">Pendientes</span>
+<span class="filter-chip">En progreso</span>
+<span class="filter-chip">Resueltos</span>
+<span class="filter-chip">Urgentes</span>
+<span class="filter-chip">Sin asignar</span>
+</div>
+<div class="card">
+<div class="card-body" style="padding:0">
+<table class="data-table">
+<thead><tr><th>ID</th><th>Título</th><th>Categoría</th><th>Solicitante</th><th>Prioridad</th><th>Estado</th><th>Técnico</th><th>Creado</th><th>Acciones</th></tr></thead>
+<tbody>
+<tr>
+<td><span class="ticket-id">#TK-2024-089</span></td>
+<td><div class="ticket-title">Servidor de correo caído</div><div class="ticket-desc">Infraestructura</div></td>
+<td>Infraestructura</td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c6)">MR</div><div class="name">María Rodríguez</div></div></td>
+<td><span class="badge badge-priority-urgente"><i class="fas fa-bolt"></i> Urgente</span></td>
+<td><span class="badge badge-status en-progreso"><i class="fas fa-spinner fa-spin"></i> En progreso</span></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c7)">JL</div><div class="name">Juan López</div></div></td>
+<td>Hace 2h</td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-089')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" onclick="openModal('modalAsignarTecnico')" title="Asignar"><i class="fas fa-user-plus"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+<tr>
+<td><span class="ticket-id">#TK-2024-088</span></td>
+<td><div class="ticket-title">Error en módulo de facturación</div><div class="ticket-desc">Software</div></td>
+<td>Software</td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:#e74c3c">CP</div><div class="name">Carlos Pérez</div></div></td>
+<td><span class="badge badge-priority-alta"><i class="fas fa-arrow-up"></i> Alta</span></td>
+<td><span class="badge badge-status pendiente"><i class="fas fa-circle"></i> Pendiente</span></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c5)">AS</div><div class="name">Ana Sánchez</div></div></td>
+<td>Hace 4h</td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-088')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" onclick="openModal('modalAsignarTecnico')" title="Asignar"><i class="fas fa-user-plus"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+<tr>
+<td><span class="ticket-id">#TK-2024-087</span></td>
+<td><div class="ticket-title">Actualización de antivirus</div><div class="ticket-desc">Seguridad</div></td>
+<td>Seguridad</td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:#f39c12">LG</div><div class="name">Laura Gómez</div></div></td>
+<td><span class="badge badge-priority-media"><i class="fas fa-minus"></i> Media</span></td>
+<td><span class="badge badge-status en-progreso"><i class="fas fa-spinner fa-spin"></i> En progreso</span></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c8)">DM</div><div class="name">Diego Martínez</div></div></td>
+<td>Hace 6h</td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-087')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" onclick="openModal('modalAsignarTecnico')" title="Asignar"><i class="fas fa-user-plus"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+<tr>
+<td><span class="ticket-id">#TK-2024-086</span></td>
+<td><div class="ticket-title">Impresora no responde en piso 3</div><div class="ticket-desc">Hardware</div></td>
+<td>Hardware</td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:#27ae60">RF</div><div class="name">Roberto Fernández</div></div></td>
+<td><span class="badge badge-priority-baja"><i class="fas fa-arrow-down"></i> Baja</span></td>
+<td><span class="badge badge-status pendiente"><i class="fas fa-circle"></i> Pendiente</span></td>
+<td><span style="color:var(--c5);font-size:.8rem;font-style:italic">Sin asignar</span></td>
+<td>Hace 8h</td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-086')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" onclick="openModal('modalAsignarTecnico')" title="Asignar"><i class="fas fa-user-plus"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+<tr>
+<td><span class="ticket-id">#TK-2024-085</span></td>
+<td><div class="ticket-title">VPN lenta para usuarios remotos</div><div class="ticket-desc">Red</div></td>
+<td>Red</td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:#3498db">PT</div><div class="name">Patricia Torres</div></div></td>
+<td><span class="badge badge-priority-alta"><i class="fas fa-arrow-up"></i> Alta</span></td>
+<td><span class="badge badge-status resuelto"><i class="fas fa-check"></i> Resuelto</span></td>
+<td><div class="user-cell"><div class="avatar-circle" style="background:var(--c7)">JL</div><div class="name">Juan López</div></div></td>
+<td>Ayer</td>
+<td><div class="actions-cell"><button class="btn-action" onclick="openTicketDetail('TK-2024-085')" title="Ver"><i class="fas fa-eye"></i></button><button class="btn-action" onclick="openModal('modalAsignarTecnico')" title="Asignar"><i class="fas fa-user-plus"></i></button><button class="btn-action" title="Editar"><i class="fas fa-edit"></i></button></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- TICKET DETAIL -->
+<section class="page-section" id="page-ticket-detail">
+<div class="page-header">
+<div class="page-title"><h2><span class="ticket-id" id="detail-ticket-id">#TK-2024-089</span></h2><p id="detail-ticket-title">Servidor de correo caído</p></div>
+<div style="display:flex;gap:10px">
+<button class="btn btn-secondary" onclick="showPage('tickets')"><i class="fas fa-arrow-left"></i> Volver</button>
+<button class="btn btn-primary" onclick="openModal('modalAsignarTecnico')"><i class="fas fa-user-plus"></i> Asignar Técnico</button>
+</div>
+</div>
+<div class="detail-layout">
+<div class="detail-main">
+<div class="card">
+<div class="tabs">
+<div class="tab active" onclick="switchTab(this,'tab-chat')">Chat Interno</div>
+<div class="tab" onclick="switchTab(this,'tab-historial')">Historial</div>
+<div class="tab" onclick="switchTab(this,'tab-detalles')">Detalles</div>
+</div>
+<div class="tab-content active" id="tab-chat">
+<div class="chat-container" style="border:none;box-shadow:none;">
+<div class="chat-messages" id="chatMessages">
+<div class="message received">
+<div class="avatar-circle" style="background:var(--c6);width:32px;height:32px;font-size:.75rem;flex-shrink:0">MR</div>
+<div><div class="message-bubble">Hola, el servidor de correo está caído desde las 9:00 AM. Necesitamos resolverlo urgentemente porque tenemos clientes esperando respuestas.</div><div class="message-time">María Rodríguez · Hace 2 horas</div></div>
+</div>
+<div class="message sent">
+<div class="avatar-circle" style="background:var(--c7);width:32px;height:32px;font-size:.75rem;flex-shrink:0">JL</div>
+<div><div class="message-bubble">Recibido, estoy revisando el servidor ahora mismo. Parece ser un problema con el servicio de SMTP. Voy a reiniciar los servicios.</div><div class="message-time">Juan López · Hace 1 hora</div></div>
+</div>
+<div class="message received">
+<div class="avatar-circle" style="background:var(--c6);width:32px;height:32px;font-size:.75rem;flex-shrink:0">MR</div>
+<div><div class="message-bubble">Perfecto, avísame cuando esté listo. ¿Necesitas algo de mi parte?</div><div class="message-time">María Rodríguez · Hace 45 min</div></div>
+</div>
+<div class="message sent">
+<div class="avatar-circle" style="background:var(--c7);width:32px;height:32px;font-size:.75rem;flex-shrink:0">JL</div>
+<div><div class="message-bubble">Ya reinicié los servicios. Por favor verifica si puedes enviar un correo de prueba. El servicio debería estar funcionando correctamente ahora.</div><div class="message-time">Juan López · Hace 20 min</div></div>
+</div>
+</div>
+<div class="chat-input-area">
+<input type="text" id="chatInput" placeholder="Escribe un mensaje..." onkeypress="if(event.key==='Enter')sendMessage()">
+<button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
