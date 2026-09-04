@@ -32,3 +32,22 @@ function openTicketDetail(id){
 document.getElementById('detail-ticket-id').textContent='#'+id;
 showPage('ticket-detail');
 }
+function openModal(modalId){
+document.getElementById(modalId).classList.add('active');
+}
+function closeModal(modalId){
+document.getElementById(modalId).classList.remove('active');
+}
+function crearTicket(){
+const titulo=document.getElementById('ticketTitulo').value.trim();
+const solicitante=document.getElementById('ticketSolicitante').value.trim();
+if(!titulo||!solicitante){
+alert('Por favor completa el título y el solicitante');
+return;
+}
+alert('Ticket creado: '+titulo);
+document.getElementById('ticketTitulo').value='';
+document.getElementById('ticketSolicitante').value='';
+document.getElementById('ticketDescripcion').value='';
+closeModal('modalCrearTicket');
+}
