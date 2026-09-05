@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-# TicketPro - Sistema de Tickets de Soporte
-
-Sistema de gestión de tickets de soporte técnico con dashboard, chat interno, asignación de técnicos y reportes.
-
-## Descripción
-
-TicketPro es una interfaz web para administrar solicitudes de soporte técnico. Permite visualizar estadísticas generales, dar seguimiento a los tickets, asignar técnicos y comunicarse mediante un chat interno por cada ticket.
-
-## Funcionalidades
-=======
-# ⚙️Sistema de Tickets de Soporte
+# ⚙️ TicketPro - Sistema de Tickets de Soporte
 
 Sistema de gestión de tickets de soporte técnico con dashboard, chat interno, asignación de técnicos y reportes.
 
@@ -18,7 +7,6 @@ Sistema de gestión de tickets de soporte técnico con dashboard, chat interno, 
 TicketPro es una interfaz web para administrar solicitudes de soporte técnico. Permite visualizar estadísticas generales, dar seguimiento a los tickets, asignar técnicos y comunicarse mediante un chat interno por cada ticket.
 
 ## ✨ Funcionalidades
->>>>>>> effe84267ad8d520e16a26ce747bfebc1621ad00
 
 - Dashboard con estadísticas generales (total de tickets, pendientes, resueltos y urgentes)
 - Listado de tickets con filtros por estado
@@ -27,29 +15,6 @@ TicketPro es una interfaz web para administrar solicitudes de soporte técnico. 
 - Historial de actividad reciente
 - Reportes con tiempo promedio de resolución y satisfacción del cliente
 - Formulario para crear nuevos tickets
-
-<<<<<<< HEAD
-## Tecnologías
-=======
-## 📋 Tecnologías
->>>>>>> effe84267ad8d520e16a26ce747bfebc1621ad00
-
-- HTML5
-- CSS3
-- JavaScript
-
-## Cómo usarlo
-
-1. Cloná el repositorio
-git clone https://github.com/cvanessa-dev/ticket-system.git
-
-
-2. Abrí la carpeta en VS Code
-3. Abrí el archivo `Index.html` con la extensión Live Server para visualizarlo en el navegador
-
-## Estado del proyecto
-
-En desarrollo. Algunas funcionalidades como la búsqueda y la asignación de técnicos aún están en construcción.
 
 ## Capturas de pantalla
 
@@ -68,13 +33,23 @@ En desarrollo. Algunas funcionalidades como la búsqueda y la asignación de té
 ### Reportes
 ![Reportes](screenshots/Reportes.png)
 
-<<<<<<< HEAD
-## Autora
+## 📋 Tecnologías
 
-Vanessa Rodríguez
-=======
+- HTML5
+- CSS3
+- JavaScript
+
+## Cómo usarlo
+
+1. Cloná el repositorio
+
+2. Abrí la carpeta en VS Code
+3. Abrí el archivo `index.html` con la extensión Live Server para visualizarlo en el navegador
+
+## Estado del proyecto
+
+En desarrollo. Algunas funcionalidades como la búsqueda y la asignación de técnicos aún están en construcción.
 
 ## 👩‍💻 Autora
 
 Vanessa Rodríguez
->>>>>>> effe84267ad8d520e16a26ce747bfebc1621ad00
