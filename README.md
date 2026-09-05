@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TicketPro - Sistema de Tickets de Soporte
 
 Sistema de gestión de tickets de soporte técnico con dashboard, chat interno, asignación de técnicos y reportes.
@@ -7,6 +8,17 @@ Sistema de gestión de tickets de soporte técnico con dashboard, chat interno, 
 TicketPro es una interfaz web para administrar solicitudes de soporte técnico. Permite visualizar estadísticas generales, dar seguimiento a los tickets, asignar técnicos y comunicarse mediante un chat interno por cada ticket.
 
 ## Funcionalidades
+=======
+# ⚙️Sistema de Tickets de Soporte
+
+Sistema de gestión de tickets de soporte técnico con dashboard, chat interno, asignación de técnicos y reportes.
+
+## 🔗 Descripción
+
+TicketPro es una interfaz web para administrar solicitudes de soporte técnico. Permite visualizar estadísticas generales, dar seguimiento a los tickets, asignar técnicos y comunicarse mediante un chat interno por cada ticket.
+
+## ✨ Funcionalidades
+>>>>>>> effe84267ad8d520e16a26ce747bfebc1621ad00
 
 - Dashboard con estadísticas generales (total de tickets, pendientes, resueltos y urgentes)
 - Listado de tickets con filtros por estado
@@ -16,7 +28,11 @@ TicketPro es una interfaz web para administrar solicitudes de soporte técnico. 
 - Reportes con tiempo promedio de resolución y satisfacción del cliente
 - Formulario para crear nuevos tickets
 
+<<<<<<< HEAD
 ## Tecnologías
+=======
+## 📋 Tecnologías
+>>>>>>> effe84267ad8d520e16a26ce747bfebc1621ad00
 
 - HTML5
 - CSS3
@@ -52,6 +68,13 @@ En desarrollo. Algunas funcionalidades como la búsqueda y la asignación de té
 ### Reportes
 ![Reportes](screenshots/Reportes.png)
 
+<<<<<<< HEAD
 ## Autora
 
 Vanessa Rodríguez
+=======
+
+## 👩‍💻 Autora
+
+Vanessa Rodríguez
+>>>>>>> effe84267ad8d520e16a26ce747bfebc1621ad00
